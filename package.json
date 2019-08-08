@@ -4,16 +4,17 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start ui": "react-scripts start",
-    "start api-server": "node src/server.js",
-    "build ui": "react-scripts build",
-    "test ui": "react-scripts test",
-    "test api-server": "mocha --require test/setup.js",
-    "eject ui": "react-scripts eject",
-    "dev api-server": "nodemon src/server.js",
-    "debug api-server": "ndb src/server.js",
-    "predeploy api-server": "npm audit",
-    "deploy api-server": "git push heroku master"
+    "start": "cd client && react-scripts start",
+    "start-api": "node api/src/server.js",
+    "start-auth": "node auth/src/server.js",
+    "build-ui": "react-scripts build",
+    "test-ui": "react-scripts test",
+    "test-api": "mocha --require api/test/setup.js",
+    "eject-ui": "react-scripts eject",
+    "dev-api": "nodemon api/src/server.js",
+    "debug-api": "ndb api/src/server.js",
+    "predeploy-api": "npm audit",
+    "deploy-api": "git push heroku master"
   },
   "dependencies": {
     "react": "^16.8.6",
