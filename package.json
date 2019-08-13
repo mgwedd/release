@@ -13,8 +13,11 @@
     "eject:client": "react-scripts eject",
     "dev:api": "nodemon api/src/server.js",
     "debug:api": "ndb api/src/server.js",
-    "predeploy:api": "cd api && npm audit",
-    "deploy:api": "cd api && git push heroku master"
+    "predeploy:api": " npm audit && npm run migrate:prod",
+    "predeploy:client": "npm audit --fix && cd client && npm audit --fix && npm t",
+    "deploy:client": "cd client && npm run build && now alias -A ./build/now.json",
+    "deploy:api": "git push heroku master", 
+    "migrate:api:prod": "postgrator --config postgrator-pr"
   },
   "dependencies": {
     "@types/cors": "^2.8.5",
