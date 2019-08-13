@@ -1,52 +1,31 @@
 {
-    "name": "release",
-    "version": "0.1.0",
-    "main": "index.js",
-    "private": true,
-    "scripts": {
-      "start": "cd client && react-scripts start",
-      "start-api": "node api/src/server.js",
-      "start-auth": "node auth/src/server.js",
-      "build-ui": "react-scripts build",
-      "test-ui": "react-scripts test",
-      "test-api": "mocha --require api/test/setup.js",
-      "eject-ui": "react-scripts eject",
-      "dev-api": "nodemon api/src/server.js",
-      "debug-api": "ndb api/src/server.js",
-      "predeploy-api": "npm audit",
-      "deploy-api": "git push heroku master"
-    },
-    "dependencies": {
-      "react": "^16.8.6",
-      "react-dom": "^16.8.6",
-      "react-scripts": "3.0.1",
-      "cors": "^2.8.5",
-      "dotenv": "^8.0.0",
-      "express": "^4.17.1",
-      "helmet": "^3.18.0",
-      "morgan": "^1.9.1"
-    },
-    "devDependencies": {
-      "chai": "^4.2.0",
-      "mocha": "^6.1.4",
-      "ndb": "^1.0.45",
-      "nodemon": "^1.19.1",
-      "supertest": "^4.0.2"
-    },
-    "eslintConfig": {
-      "extends": "react-app"
-    },
-    "browserslist": {
-      "production": [
-        ">0.2%",
-        "not dead",
-        "not op_mini all"
-      ],
-      "development": [
-        "last 1 chrome version",
-        "last 1 firefox version",
-        "last 1 safari version"
-      ]
-    }
+  "name": "release-client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
-  
+}
