@@ -1,6 +1,4 @@
-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=-
-=-=-=-=-=-=-=-=- RELEASE RESTful API SERVER =-=-=-=-=-=-
-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=-
+=-=-= RELEASE RESTful API SERVER =-=-=
 
 This Node/Express server supports the ReLease full-stack project.
 It exposes several public and private endpoints for clients to 
@@ -11,11 +9,9 @@ a postgres database through Knex and a Redis caching layer on top of the databas
 to enable the client's map-based UI to be performant given the volume of queries 
 a map-based UI can require. 
 
-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=
-=-=-=-=-=-=-=-=- ENDPOINTS =-=-=-=-=-=-=-=-=-=-
-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=
+=-=-= ENDPOINTS =-=-=
 
-=-=-=-= PUBLIC ENDPOINTS =-=-=-=
+= PUBLIC ENDPOINTS =
 
 **1. GET /search**
     # pass query params to endpoint for search with GET method. default is lat/lon of users current location, which is asked for upon load.
@@ -35,7 +31,7 @@ a map-based UI can require.
     If the user is logged in, then the form will hide any "create user" fields and substitute 
     the user_id behind the scenes on this server, binding the existing user_id to the property's owner field.
 
-=-=-=-= PRIVATE ENDPOINTS =-=-=-= 
+=-=-= PRIVATE ENDPOINTS =-=-= 
 
 **1. PATCH, DELETE /sublet/:property_id**
     # Requires the user to be logged in and be the owner of the property in question. 
@@ -44,11 +40,9 @@ a map-based UI can require.
     # Requires the user to be logged in. This endpoint is similar to the POST /sublet/create endpoint, 
     except here a user wouldn't create their 
 
-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=-
-=-=-=-=-=-=-=-=- DATA MODELS =-=-=-=-=-=-=-=-=-=
-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=-
+=-=-= DATA MODELS =-=-=
 
-=-=-= PROPERTY =-=-=
+= PROPERTY =
 
 {
     "property_id": "uuid, AUTO",
@@ -63,7 +57,7 @@ a map-based UI can require.
     "posted_date": "date, when the listing was posted, AUTO"
 }
 
-=-=-= USER =-=-=
+= USER =
 
 {
     "user_id": "uuid, AUTO", 
@@ -74,7 +68,7 @@ a map-based UI can require.
     "date_deactivated": "date, USER INPUT"
 }
 
-=-=-= CONTACT =-=-=
+= CONTACT =
 
 {
     "sender": "string, email address of sender", 
