@@ -36,7 +36,7 @@ a map-based UI can require.
 **1. PATCH, DELETE /sublet/:property_id**
     # Requires the user to be logged in and be the owner of the property in question. 
 
-**1. POST /sublet/:user_id/create**
+**1. POST /:user_id/create**
     # Requires the user to be logged in. This endpoint is similar to the POST /sublet/create endpoint, 
     except here a user wouldn't create their 
 
@@ -64,15 +64,16 @@ a map-based UI can require.
     "full_name": "string, REQUIRED", 
     "email": "string, email, REQUIRED", 
     "phone": "number, REQUIRED", 
-    "date_joined": "date, AUTO", 
-    "date_deactivated": "date, USER INPUT"
+    "joined": "date, AUTO", 
+    "deactivated": "date, USER INPUT"
 }
 
 #### = CONTACT =
 
 {
+    "id" "primary key"
     "sender": "string, email address of sender", 
     "recipient": "foreign key of property owner, user_id", 
-    "property_id": "foreign key, property_id of property thats subject"
-
+    "property_id": "foreign key, property_id of property thats subject",  
+    message: "string, not null"
 }

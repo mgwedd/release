@@ -9,15 +9,16 @@
     "start:api": "node api/src/server.js",
     "build:client": "react-scripts build",
     "test:client": "react-scripts test",
-    "test:api": "cd api && mocha --require api/test/setup.js",
+    "test:api": "cd api && mocha --require test/setup.js",
     "eject:client": "react-scripts eject",
     "dev:api": "nodemon api/src/server.js",
     "debug:api": "ndb api/src/server.js",
     "predeploy:api": " npm audit && npm run migrate:prod",
     "predeploy:client": "npm audit --fix && cd client && npm audit --fix && npm t",
     "deploy:client": "cd client && npm run build && now alias -A ./build/now.json",
-    "deploy:api": "git push heroku master", 
-    "migrate:api:prod": "postgrator --config postgrator-pr"
+    "deploy:api": "git push heroku master",
+    "migrate:dev": "cd api && postgrator --config postgrator-config.js",
+    "migrate:prod": "cd api && postgrator --config postgrator-pr"
   },
   "dependencies": {
     "@types/cors": "^2.8.5",
@@ -38,6 +39,8 @@
     "mocha": "^6.1.4",
     "ndb": "^1.0.45",
     "nodemon": "^1.19.1",
+    "pg": "^7.12.1",
+    "postgrator-cli": "^3.1.0",
     "supertest": "^4.0.2"
   },
   "eslintConfig": {
