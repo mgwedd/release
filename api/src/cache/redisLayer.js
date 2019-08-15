@@ -1,1 +1,0 @@
-// pass as middleware to all routes before any db interaction 

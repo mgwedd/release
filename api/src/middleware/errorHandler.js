@@ -11,6 +11,9 @@ function errorHandler( error, req, res, next ) {
   }
   logger.error( { message : response, timestamp : new Date() } )
   res.status( 500 ).json( response )
+
+  // attempt to move on to next middleware 
+  next()
 }
 
 module.exports = errorHandler 

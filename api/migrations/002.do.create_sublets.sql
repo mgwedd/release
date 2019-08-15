@@ -3,6 +3,7 @@ CREATE TABLE sublets (
     owner INTEGER REFERENCES users(id) NOT NULL,
     title TEXT NOT NULL, 
     address VARCHAR(250) NOT NULL, 
+    geocode VARCHAR(100),
     description TEXT, 
     num_rooms INTEGER NOT NULL, 
     num_sleeps INTEGER NOT NULL, 

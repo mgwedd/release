@@ -9,6 +9,53 @@ a postgres database through Knex and a Redis caching layer on top of the databas
 to enable the client's map-based UI to be performant given the volume of queries 
 a map-based UI can require. 
 
+### DIRECTORY INDEX
+
+```
+.[root]
+├── LICENSE
+├── client
+|       ...
+├── api
+│   ├── Procfile
+│   ├── README.md
+│   ├── migrations
+│   │   ├── ...
+│   ├── postgrator-config.js
+│   ├── postgrator-prod-config.js
+│   ├── seeds
+│   │   ├── ...
+│   ├── src
+│   │   ├── app.js
+│   │   ├── auth
+│   │   │   └── authenticate.js
+│   │   ├── config.js
+│   │   ├── controllers
+│   │   │   ├── authController.js
+│   │   │   ├── publicController.js
+│   │   │   ├── subletController.js
+│   │   │   └── userController.js
+│   │   ├── middleware
+│   │   │   ├── errorHandler.js
+│   │   │   └── logger.js
+│   │   ├── routers
+│   │   │   ├── authRouter.js
+│   │   │   ├── publicRouter.js
+│   │   │   ├── subletRouter.js
+│   │   │   └── userRouter.js
+│   │   ├── server.js
+│   │   ├── services
+│   │   │   ├── geocoderService.js
+│   │   │   ├── mailerService.js
+│   │   │   ├── subletService.js
+│   │   │   └── userService.js
+│   │   └── utils
+│   │           ...
+│   └── test
+│   │       ...
+```
+
+
 ## =-=-= ENDPOINTS =-=-=
 
 #### = PUBLIC ENDPOINTS =
@@ -35,6 +82,8 @@ a map-based UI can require.
 
     If the user is logged in, then the form will hide any "create user" fields and substitute 
     the user_id behind the scenes on this server, binding the existing user_id to the property's owner field.
+
+    MAke sure the user knows theyre signing up and can then be used to log in and remove! 
 
 **4. POST /user**
     NOTE: take all user registration off of the post sublet, and then just make sync calls from the UI
