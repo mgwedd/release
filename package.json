@@ -18,7 +18,7 @@
     "deploy:client": "cd client && npm run build && now alias -A ./build/now.json",
     "deploy:api": "git push heroku master",
     "migrate:dev": "cd api && postgrator --config postgrator-config.js",
-    "migrate:prod": "cd api && postgrator --config postgrator-pr"
+    "migrate:prod": "postgrator --config postgrator-pr"
   },
   "dependencies": {
     "@types/cors": "^2.8.5",
