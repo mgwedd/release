@@ -3,17 +3,11 @@ const router = express.Router()
 
 const subletController = require( '../controllers/subletController' )
 
-router
-    .route( '/sublet' )
-
-    .get( subletController.getAllSublets ) 
-
-    .post( subletController.postSublet )
-
+/**
+ * PRIVATE SUBLET ROUTER
+ */
 router
     .route( '/sublet/:id' )
-
-    .get( subletController.getSubletById )
 
     .patch( subletController.updateSublet )
 
