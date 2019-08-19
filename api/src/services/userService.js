@@ -1,4 +1,3 @@
-const knexClient = require( '../server').knexClient
 
 const userService = {
     getLimitedUser( userId ) {
@@ -13,7 +12,7 @@ const userService = {
     deleteUser( userId ) {
 
     }, 
-    contactUser( message, senderEmail, receiverUserId ) {
+    contactUser( toUserId, fromEmail, message ) {
         // https://nodemailer.com/about/
         // pass user info to mailservice to send. 
         // this service method is here as a pass through for 
@@ -21,6 +20,4 @@ const userService = {
     }
 }
 
-module.exports = {
-    userService
-}
+module.exports = userService

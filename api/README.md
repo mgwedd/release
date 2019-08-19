@@ -9,6 +9,14 @@ a postgres database through Knex and a Redis caching layer on top of the databas
 to enable the client's map-based UI to be performant given the volume of queries 
 a map-based UI can require. 
 
+The postgres DB that this API uses needs the PostGIS extension enabled. The migration scripts 
+assume the extension has been configured manually. The API's core public endpoint, the api/sublet endpoint one, also assumes that PostGIS geographic datatype functions are avaiable on the database. 
+
+For generating externally available IDs, the API also assumes the postgres DB with which it interfaces
+uses private internal IDs as well as public IDs, with those public IDs being generated automatically using the uuid-osp Postgres extension. The private IDs are for Postgres, the public ones are 
+visible to clients. This is a security practice. 
+
+
 ### DIRECTORY INDEX
 
 ```

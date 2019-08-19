@@ -6,11 +6,12 @@ const userService = require( '../services/userService' )
 exports.getFullUser = ( req, res, next ) => {
     
     const { userId } = req
+    const knexClient = req.app.get( 'knexClient' )
 
     userService
-        .getFullUser( userId )
-        .then( ( res ) => {
-            res.json( res )
+        .getFullUser( userId, knexClient )
+        .then( ( queryResult ) => {
+            res.json( queryResult )
         } )
         .catch( next )
 }
@@ -18,11 +19,12 @@ exports.getFullUser = ( req, res, next ) => {
 exports.updateUser = ( req, res, next ) => {
     
     const { newUserFields } = req
+    const knexClient = req.app.get( 'knexClient' )
 
     userService
-        .updateUser( newUserFields )
-        .then( ( res ) => {
-            res.json( res )
+        .updateUser( newUserFields, knexClient )
+        .then( ( queryResult ) => {
+            res.json( queryResult )
         } )
         .catch( next )
 }
@@ -30,11 +32,12 @@ exports.updateUser = ( req, res, next ) => {
 exports.deleteUser = ( req, res, next ) => {
     
     const { userId } = req
+    const knexClient = req.app.get( 'knexClient' )
     
     userService
-        .deleteUser( userId )
-        .then( ( res ) => {
-            res.json( res )
+        .deleteUser( userId, knexClient )
+        .then( ( queryResult ) => {
+            res.json( queryResult )
         } )
         .catch( next )
 }

@@ -1,14 +1,5 @@
-const knex = require( 'knex' )
 const app = require( './app' )
-const { PORT, DB_URL, NODE_ENV } = require( './config' )
-
-/**
- * The knexClient is imported by /services/... to manage DB interfacing
- */
-const knexClient = knex( {
-  client : 'pg',
-  connection : DB_URL,
-} )
+const { PORT, NODE_ENV } = require( './config' )
 
 app.listen( PORT, () => {
 
@@ -17,7 +8,3 @@ app.listen( PORT, () => {
   }
   
 } )
-
-module.exports = {
-  knexClient
-}
