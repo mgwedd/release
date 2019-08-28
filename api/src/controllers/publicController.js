@@ -1,13 +1,13 @@
 const subletService = require( '../services/subletService' )
 const userService = require( '../services/userService' )
 const getGeocode = require ( '../utils/geocoder' )
-
+const path = require( 'path' )
 /**
  * PUBIC ROUTE CONTROLLERS
  */
 
 exports.getSublets = ( req, res, next ) => {
-    const { currentUserMapBounds } = req
+    const { currentUserMapBounds } = req.body
     const knexClient = req.app.get( 'knexClient' )
     // involved. will need util functions for sure. 
     // return res.status(200).json('Hello, World. This is the "getSubletsWithinMapBounds" controller speaking.')
@@ -20,7 +20,7 @@ exports.getSublets = ( req, res, next ) => {
 }
 
 exports.postNewSublet  = ( req, res, next ) => {
-    // const { newSublet } = req
+    // const { newSublet } = req.body
     
     // TODO TEMP
     const newSublet = {
@@ -60,6 +60,32 @@ exports.getLimitedUser  = ( req, res, next ) => {
     //     } )
     //     .catch( next )
 }
+
+exports.postNewUser  = ( req, res, next ) => {
+    const { user, user : { password } } = req.body
+    const knexClient = req.app.get( 'knexClient' )
+
+    // return res.status(200).json('Hello, World. This is the "contactUser" controller speaking.')
+    return userService.hashPassword( password )
+    .then( ( hashedPassword ) => {
+      const newUser = {
+        ...user,
+        password : hashedPassword,
+      }
+    
+      return userService.insertUser(
+        knexClient,
+        newUser
+      )
+        .then( ( user ) => {
+          res
+            .status( 201 )
+            .location( path.posix.join( req.originalUrl, `/${user.id}` ) )
+            .json( userService.serializeUser( user ) )
+        } )
+    })
+}
+
 
 exports.contactUser  = ( req, res, next ) => {
     const { toUserId, fromEmail, message } = req

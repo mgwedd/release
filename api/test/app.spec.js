@@ -4,6 +4,6 @@ describe( 'App', () => {
   it( 'GET / responds with 200 containing "Hello, world!"', () => {
     return supertest( app )
       .get( '/' )
-      .expect( 200, 'Hello, Boilerplate!' );
-  });
-});
+      .expect( 200, 'Hello, this is the ReLease server speaking!' );
+  })
+})

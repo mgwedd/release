@@ -2,6 +2,10 @@ const utils = require('../utils/geocoder')
 
 const subletService = { 
     getSubletsWithinMapBounds( currentUserMapBounds, knexClient ) {
+        // on the client, gather the bounds as LatLngBounds class of google maps api. 
+        // return those bounds, that sw / ne rectangle. 
+        // Then, "post gis, get me the geo-markers within that rectangle"
+
         // db interaction.
         // if no map bounds given, return all sublets as a result. 
         // attempt to insert the cached last bounds into a query for the new bounds — 
@@ -23,7 +27,7 @@ const subletService = {
             .first()
     }, 
     postNewSublet( newSublet, knexClient, getGeocode ) {
-        const st = knexClient.postgis // "st" stands for spatial type postgis functions
+        const { st } = knexClient.postgis // "st" stands for spatial type postgis functions
 
         const geocodedAddress = new Promise( ( resolve, reject ) => {
             const geocode = getGeocode( newSublet.address )
@@ -37,7 +41,6 @@ const subletService = {
                 newSublet.lat = geocodedAddress.lat
             } )
             .then( () => {
-
                 knexClient
                     .insert( 
                         { 
